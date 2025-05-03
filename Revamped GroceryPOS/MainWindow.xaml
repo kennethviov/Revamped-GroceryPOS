@@ -5,8 +5,101 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Revamped_GroceryPOS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
-    <Grid>
-        
-    </Grid>
+        Title="Joshua Sarry Sarry Store" Height="720" Width="1280"
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent">
+
+
+    <Border Name="MainBorder" 
+            Background="#F6F8FA" 
+            CornerRadius="12">
+
+        <Grid>
+
+            <Border Name="Docker" 
+                    Background="#D9D9D9" 
+                    Height="28" 
+                    CornerRadius="12,12,0,0"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Stretch" 
+                    Margin="0,0,0,0"
+                    MouseDown="Docker_MouseDown">
+
+                <Grid>
+
+                    <Button Name="CloseButton"
+                            Width="16" 
+                            Height="16"
+                            Background="#FF0000"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" 
+                            Margin="1256,0,0,0"
+                            Click="CloseButton_Click"
+                            Cursor="Hand"
+                            MouseEnter="CloseButton_MouseEnter"
+                            MouseLeave="CloseButton_MouseLeave">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button Name="MinimizeButton"
+                            Width="16"
+                            Height="16"
+                            Background="#FBC900"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="1232,0,0,0"
+                            Click="MinimizeButton_Click"
+                            Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}" 
+                                        CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Image x:Name="Close"
+                           Source="/delete (2).png" 
+                           Width="18"
+                           Height="18"
+                           Margin="1255,5,7,5"/>
+                </Grid>
+            </Border>
+
+            <Border Name="DefaultSidePanel"
+                    Background="White"
+                    Width="48"
+                    HorizontalAlignment="Left"
+                    CornerRadius="0,0,0,12"
+                    Margin="0,28,0,0">
+
+                <Grid>
+
+                </Grid>
+            </Border>
+
+            <Border Name="Cart"
+                    Background="White"
+                    Width="306"
+                    HorizontalAlignment="Right"
+                    CornerRadius="0,0,12,0"
+                    Margin="0,28,0,0">
+
+                <Grid>
+
+                </Grid>
+            </Border>
+            <Image HorizontalAlignment="Left" Height="100" Margin="524,116,0,0" VerticalAlignment="Top" Width="100" Source="/apple (2).png"/>
+        </Grid>
+    </Border>
 </Window>

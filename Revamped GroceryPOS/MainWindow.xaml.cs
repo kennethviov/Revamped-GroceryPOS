@@ -19,6 +19,45 @@ namespace Revamped_GroceryPOS
         public MainWindow()
         {
             InitializeComponent();
+            SetStage();
+        }
+
+        private void SetStage()
+        {
+            Close.Visibility = Visibility.Collapsed;
+        }
+
+        /*  
+         *  Mouse events in the Docker
+         *
+        */
+
+        private void Docker_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void CloseButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Close.Visibility = Visibility.Visible;
+        }
+
+        private void CloseButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Close.Visibility = Visibility.Collapsed;
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
     }
 }
