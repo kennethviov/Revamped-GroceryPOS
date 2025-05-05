@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Revamped_GroceryPOS.Components.ProductCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Revamped_GroceryPOS.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="160"
+             d:Background="Transparent">
+    <Border Width="160" Height="200"
+            CornerRadius="7"
+            Background="White"
+            >
+        <Grid>
+            <Ellipse Width="24" Height="24"
+                     Fill="#4C81F1" Margin="130,168,6,8"/>
+
+            <Image Source="pack://application:,,,/Resources/Icons/shopping-and-commerce.png"
+                   Width="18" Height="18"
+                   Margin="130,168,6,8"/>
+
+            <Border CornerRadius="7"
+                    Width="120" Height="120"
+                    Margin="20,4,20,76">
+                <Image Name="image"
+                       Source="pack://application:,,,/Resources/Products/broken-image.png"/>
+            </Border>
+
+            <TextBlock Name="name"
+                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                       Text="Product Name lorim ipsum"
+                       Width="120"
+                       FontSize="13" FontWeight="Bold"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,124,0,0"
+                       TextWrapping="Wrap"/>
+
+            <TextBlock Name="price"
+                       Text="P0.0"
+                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                       FontSize="15"
+                       Margin="12,163,35,15"/>
+
+            <TextBlock Name="unit"
+                       Text="/unit"
+                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                       FontSize="10"
+                       Foreground="Gray"
+                       Margin="12,180,61,4"/>
+        </Grid>
+    </Border>
+</UserControl>

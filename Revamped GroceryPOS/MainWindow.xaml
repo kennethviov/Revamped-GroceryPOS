@@ -7,8 +7,17 @@
         mc:Ignorable="d"
         Title="Joshua Sarry Sarry Store" Height="720" Width="1280"
         WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
         Background="Transparent">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 
 
     <Border Name="MainBorder" 
@@ -31,14 +40,15 @@
                     <Button Name="CloseButton"
                             Width="16" 
                             Height="16"
-                            Background="#FF0000"
+                            Background="#F44336"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left" 
                             Margin="1256,0,0,0"
                             Click="CloseButton_Click"
                             Cursor="Hand"
                             MouseEnter="CloseButton_MouseEnter"
-                            MouseLeave="CloseButton_MouseLeave">
+                            MouseLeave="CloseButton_MouseLeave"
+                            ToolTip="Close">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" 
@@ -47,17 +57,25 @@
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
+                        <Image x:Name="Close"
+                           Source="pack://application:,,,/Resources/Icons/close.png" 
+                           Width="14"
+                           Height="14"
+                           Visibility="Collapsed"/>
                     </Button>
 
                     <Button Name="MinimizeButton"
                             Width="16"
                             Height="16"
-                            Background="#FBC900"
+                            Background="#FFB32C"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Left"
                             Margin="1232,0,0,0"
                             Click="MinimizeButton_Click"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            MouseEnter="MinimizeButton_MouseEnter"
+                            MouseLeave="MinimizeButton_MouseLeave"
+                            ToolTip="Minimize">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}" 
@@ -66,13 +84,12 @@
                                 </Border>
                             </ControlTemplate>
                         </Button.Template>
+                        <Image x:Name="Minimize"
+                           Source="pack://application:,,,/Resources/Icons/minus.png"
+                           Width="16"
+                           Height="16"
+                           Visibility="Collapsed"/>
                     </Button>
-
-                    <Image x:Name="Close"
-                           Source="/delete (2).png" 
-                           Width="18"
-                           Height="18"
-                           Margin="1255,5,7,5"/>
                 </Grid>
             </Border>
 
@@ -84,7 +101,123 @@
                     Margin="0,28,0,0">
 
                 <Grid>
+                    <Button Name="Menu"
+                            Height="24"
+                            Width="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,24,12,644"
+                            Cursor="Hand"
+                            Click="Menu_Click">
+                        <Grid>
+                            <Image Name="UnclickedMenu"
+                                   Source="pack://application:,,,/Resources/Icons/list.png"/>
+                            <Image Name="ClickedMenu"
+                                   Source="pack://application:,,,/Resources/Icons/list (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
 
+                    <Button Name="AllItems"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,78,12,590"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedAllItems"
+                                   Source="pack://application:,,,/Resources/Icons/grid.png"/>
+                            <Image Name="ClickedAllItems"
+                                   Source="pack://application:,,,/Resources/Icons/grid (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="Fruits"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,132,12,536"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedFruits"
+                                   Source="pack://application:,,,/Resources/Icons/apple.png"/>
+                            <Image Name="ClickedFruits"
+                                   Source="pack://application:,,,/Resources/Icons/apple (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="Vegetables"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,186,12,482"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedVegetables"
+                                   Source="pack://application:,,,/Resources/Icons/spinach.png"/>
+                            <Image Name="ClickedVegetables"
+                                   Source="pack://application:,,,/Resources/Icons/spinach (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="Meats"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,240,12,428"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedMeats"
+                                   Source="pack://application:,,,/Resources/Icons/steak.png"/>
+                            <Image Name="ClickedMeats"
+                                   Source="pack://application:,,,/Resources/Icons/steak (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="Drinks"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,294,12,374"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedDrinks"
+                                   Source="pack://application:,,,/Resources/Icons/beverage.png"/>
+                            <Image Name="ClickedDrinks"
+                                   Source="pack://application:,,,/Resources/Icons/beverage (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="Liquor"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,348,12,320"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedLiquor"
+                                   Source="pack://application:,,,/Resources/Icons/cocktail.png"/>
+                            <Image Name="ClickedLiquor"
+                                   Source="pack://application:,,,/Resources/Icons/cocktail (1).png"
+                                   Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="Admin"
+                            Width="24"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Margin="12,644,12,24"
+                            Cursor="Hand">
+                        <Grid>
+                            <Image Name="UnclickedAdmin"
+                                   Source="pack://application:,,,/Resources/Icons/user.png"/>
+                        </Grid>
+                    </Button>
                 </Grid>
             </Border>
 
@@ -99,7 +232,234 @@
 
                 </Grid>
             </Border>
-            <Image HorizontalAlignment="Left" Height="100" Margin="524,116,0,0" VerticalAlignment="Top" Width="100" Source="/apple (2).png"/>
+
+            <Border Name="TextAndSearch"
+                    Width="926"
+                    Height="132"
+                    Background="#FFF6F8FA" 
+                    Margin="48,28,306,560">
+                <Grid>
+                    <TextBlock Text="welcome to"
+                               FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                               FontSize="11"
+                               Foreground="Black"
+                               Margin="30,39,0,0"/>
+                    <TextBlock Text="Joshua's Sarry Sarry Store"
+                               FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                               FontWeight="Bold"
+                               FontSize="25"
+                               Foreground="Black"
+                               Margin="27,52,0,0"/>
+                </Grid>
+            </Border>
+
+            <Border Name="ProductsPane"
+                    Width="926"
+                    Height="560" 
+                    Margin="48,160,306,0">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <WrapPanel Name="ProductsWrapPanel">
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <Border Name="MainFrameShield"
+                    Background="#383838"
+                    Opacity="0.5"
+                    Height="692"
+                    VerticalAlignment="Bottom"
+                    Visibility="Collapsed">
+                <Button Name="KeepCollapsedSidePanel"
+                        Style="{StaticResource TransparentHoverButtons}"
+                        Click="KeepCollapsedSidePanel_Click"/>
+            </Border>
+
+            <Border Name="CollapsedSidePanel"
+                    Background="White"
+                    Width="150"
+                    HorizontalAlignment="Left"
+                    CornerRadius="0,0,0,12"
+                    Margin="0,28,0,0"
+                    Visibility="Collapsed">
+                <Grid>
+
+                    <Button Name="CMenu"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Height="24"
+                            Margin="12,24,12,644"
+                            Cursor="Hand"
+                            Click="KeepCollapsedSidePanel_Click">
+
+                        <Grid>
+                            <Image Name="CUnclickedMenu"
+                                    Source="pack://application:,,,/Resources/Icons/list.png"/>
+                            <Image Name="CClickedMenu"
+                                    Source="pack://application:,,,/Resources/Icons/list (1).png"
+                                    Visibility="Hidden"/>
+                        </Grid>
+                    </Button>
+
+                    <Button Name="CAllItems"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Height="24"
+                            Margin="12,78,12,590"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Image Name="CUnclickedAllItems"
+                                        Source="pack://application:,,,/Resources/Icons/grid.png"/>
+                                <Image Name="CClickedAllItems"
+                                        Source="pack://application:,,,/Resources/Icons/grid (1).png"
+                                        Visibility="Hidden"/>
+                            </Grid>
+                            <TextBlock Text="All Items"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       FontSize="11"
+                                       Foreground="Black"
+                                       VerticalAlignment="Center"
+                                       Margin="19,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="CFruits"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Margin="12,132,12,536"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Image Name="CUnclickedFruits"
+                                        Source="pack://application:,,,/Resources/Icons/apple.png"/>
+                                <Image Name="CClickedFruits"
+                                       Source="pack://application:,,,/Resources/Icons/apple (1).png"
+                                       Visibility="Hidden"/>
+                            </Grid>
+                            <TextBlock Text="Fruits"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       FontSize="11"
+                                       Foreground="Black"
+                                       VerticalAlignment="Center"
+                                       Margin="19,0,0,0"/>
+                        </StackPanel>
+                        
+                    </Button>
+
+                    <Button Name="CVegetables"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Margin="12,186,12,482"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Image Name="CUnclickedVegetables"
+                                       Source="pack://application:,,,/Resources/Icons/spinach.png"/>
+                                <Image Name="CClickedVegetables"
+                                       Source="pack://application:,,,/Resources/Icons/spinach (1).png"
+                                       Visibility="Hidden"/>
+                            </Grid>
+                            <TextBlock Text="Vegetables"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       FontSize="11"
+                                       Foreground="Black"
+                                       VerticalAlignment="Center"
+                                       Margin="19,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="CMeats"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Margin="12,240,12,428"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Image Name="CUnclickedMeats"
+                                       Source="pack://application:,,,/Resources/Icons/steak.png"/>
+                                <Image Name="CClickedMeats"
+                                       Source="pack://application:,,,/Resources/Icons/steak (1).png"
+                                       Visibility="Hidden"/>
+                            </Grid>
+                            <TextBlock Text="Meats"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="11"
+                                        Foreground="Black"
+                                        VerticalAlignment="Center"
+                                        Margin="19,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="CDrinks" 
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Margin="12,294,12,374"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Image Name="CUnclickedDrinks"
+                                       Source="pack://application:,,,/Resources/Icons/beverage.png"/>
+                                <Image Name="CClickedDrinks"
+                                       Source="pack://application:,,,/Resources/Icons/beverage (1).png"
+                                       Visibility="Hidden"/>
+                            </Grid>
+                            <TextBlock Text="Meats"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="11"
+                                        Foreground="Black"
+                                        VerticalAlignment="Center"
+                                        Margin="19,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="CLiquor"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Margin="12,348,12,320"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Image Name="CUnclickedLiquor"
+                                       Source="pack://application:,,,/Resources/Icons/cocktail.png"/>
+                                <Image Name="CClickedLiquor"
+                                       Source="pack://application:,,,/Resources/Icons/cocktail (1).png"
+                                       Visibility="Hidden"/>
+                            </Grid>
+                            <TextBlock Text="Liquor"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="11"
+                                        Foreground="Black"
+                                        VerticalAlignment="Center"
+                                        Margin="19,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Name="CAdmin"
+                            Height="24"
+                            Style="{StaticResource TransparentHoverButton}"
+                            Margin="12,644,12,24"
+                            Cursor="Hand">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Name="CUnclickedAdmin"
+                                    Source="pack://application:,,,/Resources/Icons/user.png"/>
+                            <TextBlock Text="Go to Admin"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="11"
+                                        Foreground="Black"
+                                        VerticalAlignment="Center"
+                                        Margin="19,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+
+            
+
         </Grid>
     </Border>
 </Window>

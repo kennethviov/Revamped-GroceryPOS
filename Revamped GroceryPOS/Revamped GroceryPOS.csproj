@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <RootNamespace>Revamped_GroceryPOS</RootNamespace>
     <Nullable>enable</Nullable>
@@ -10,13 +10,505 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="apple %282%29.png" />
-    <None Remove="delete %282%29.png" />
+    <None Remove="Resources\apple %281%29.png" />
+    <None Remove="Resources\apple %282%29.png" />
+    <None Remove="Resources\apple.png" />
+    <None Remove="Resources\beverage %281%29.png" />
+    <None Remove="Resources\beverage %282%29.png" />
+    <None Remove="Resources\beverage.png" />
+    <None Remove="Resources\calendar %281%29.png" />
+    <None Remove="Resources\calendar %282%29.png" />
+    <None Remove="Resources\calendar.png" />
+    <None Remove="Resources\cart %281%29.png" />
+    <None Remove="Resources\cart.png" />
+    <None Remove="Resources\close.png" />
+    <None Remove="Resources\cocktail %281%29.png" />
+    <None Remove="Resources\cocktail %282%29.png" />
+    <None Remove="Resources\cocktail.png" />
+    <None Remove="Resources\delete %281%29.png" />
+    <None Remove="Resources\delete %282%29.png" />
+    <None Remove="Resources\delete %283%29.png" />
+    <None Remove="Resources\delete-cart %281%29.png" />
+    <None Remove="Resources\delete-cart %282%29.png" />
+    <None Remove="Resources\delete-cart.png" />
+    <None Remove="Resources\delete.png" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Black.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-BlackItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Bold.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-BoldItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-ExtraBold.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-ExtraLight.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Italic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Light.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-LightItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Medium.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-MediumItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Regular.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-SemiBold.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-Thin.ttf" />
+    <None Remove="Resources\Fonts\poppins\Poppins-ThinItalic.ttf" />
+    <None Remove="Resources\Fonts\timeless-memories\TimelessMemoriesRegular-2vvwo.otf" />
+    <None Remove="Resources\grid %281%29.png" />
+    <None Remove="Resources\grid %282%29.png" />
+    <None Remove="Resources\grid.png" />
+    <None Remove="Resources\list %281%29.png" />
+    <None Remove="Resources\list %282%29.png" />
+    <None Remove="Resources\list.png" />
+    <None Remove="Resources\market %281%29.png" />
+    <None Remove="Resources\market %282%29.png" />
+    <None Remove="Resources\market.png" />
+    <None Remove="Resources\minus %281%29.png" />
+    <None Remove="Resources\minus.png" />
+    <None Remove="Resources\pie-chart %281%29.png" />
+    <None Remove="Resources\pie-chart %282%29.png" />
+    <None Remove="Resources\pie-chart %283%29.png" />
+    <None Remove="Resources\pie-chart.png" />
+    <None Remove="Resources\Products\A5 Wagyu.jpg" />
+    <None Remove="Resources\Products\Absolut Vodka.png" />
+    <None Remove="Resources\Products\Apple C2.jpg" />
+    <None Remove="Resources\Products\Apple.jpg" />
+    <None Remove="Resources\Products\Avocado.jpg" />
+    <None Remove="Resources\Products\Bacardi Rum.png" />
+    <None Remove="Resources\Products\Banana.jpg" />
+    <None Remove="Resources\Products\barcode.png" />
+    <None Remove="Resources\Products\Beef Flank.jpg" />
+    <None Remove="Resources\Products\Beef Ribeye.jpg" />
+    <None Remove="Resources\Products\Bell Pepper.jpg" />
+    <None Remove="Resources\Products\Blueberry.jpg" />
+    <None Remove="Resources\Products\broken-image.png" />
+    <None Remove="Resources\Products\Carrot.jpg" />
+    <None Remove="Resources\Products\Casamigos Tequila.png" />
+    <None Remove="Resources\Products\Chicken Drumsticks.jpg" />
+    <None Remove="Resources\Products\Chicken Thigh.jpg" />
+    <None Remove="Resources\Products\Chicken Wings.jpg" />
+    <None Remove="Resources\Products\Classic C2.jpg" />
+    <None Remove="Resources\Products\Coke 1L.jpg" />
+    <None Remove="Resources\Products\Coke.jpg" />
+    <None Remove="Resources\Products\Eggplant.jpg" />
+    <None Remove="Resources\Products\Fanta 1L.jpg" />
+    <None Remove="Resources\Products\Fanta.jpg" />
+    <None Remove="Resources\Products\Garlic.jpg" />
+    <None Remove="Resources\Products\Gatorade.jpg" />
+    <None Remove="Resources\Products\Ginger.jpg" />
+    <None Remove="Resources\Products\Grapes.jpg" />
+    <None Remove="Resources\Products\Green Onion.jpg" />
+    <None Remove="Resources\Products\Kamunggay.jpg" />
+    <None Remove="Resources\Products\Kiwi.jpg" />
+    <None Remove="Resources\Products\Kopiko Lucky Day.png" />
+    <None Remove="Resources\Products\Lettuce.jpg" />
+    <None Remove="Resources\Products\Mango.jpg" />
+    <None Remove="Resources\Products\Mangosteen.jpg" />
+    <None Remove="Resources\Products\Onion.jpg" />
+    <None Remove="Resources\Products\Orange.jpg" />
+    <None Remove="Resources\Products\Pineapple.jpg" />
+    <None Remove="Resources\Products\Pork Belly.jpg" />
+    <None Remove="Resources\Products\Potato.jpg" />
+    <None Remove="Resources\Products\Red Horse 1L.png" />
+    <None Remove="Resources\Products\Sauvignon Blanc.png" />
+    <None Remove="Resources\Products\Sprite 1L.jpg" />
+    <None Remove="Resources\Products\Sprite.jpg" />
+    <None Remove="Resources\Products\Squash.jpg" />
+    <None Remove="Resources\Products\Strawberry.jpg" />
+    <None Remove="Resources\Products\Tomato.jpg" />
+    <None Remove="Resources\Products\Water 1L.jpg" />
+    <None Remove="Resources\Products\Water 500ml.jpg" />
+    <None Remove="Resources\Products\Watermelon.jpg" />
+    <None Remove="Resources\Products\Whole Chicken.jpg" />
+    <None Remove="Resources\search %282%29.png" />
+    <None Remove="Resources\search %283%29.png" />
+    <None Remove="Resources\shopping-and-commerce.png" />
+    <None Remove="Resources\spinach %281%29.png" />
+    <None Remove="Resources\spinach %282%29.png" />
+    <None Remove="Resources\spinach.png" />
+    <None Remove="Resources\steak %281%29.png" />
+    <None Remove="Resources\steak %282%29.png" />
+    <None Remove="Resources\steak.png" />
+    <None Remove="Resources\storage %281%29.png" />
+    <None Remove="Resources\storage %282%29.png" />
+    <None Remove="Resources\storage.png" />
+    <None Remove="Resources\store %281%29.png" />
+    <None Remove="Resources\store.png" />
+    <None Remove="Resources\user %281%29.png" />
+    <None Remove="Resources\user.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="apple (2).png" />
-    <Resource Include="delete (2).png" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\apple %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\apple %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\apple.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\beverage %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\beverage %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\beverage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\calendar %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\calendar %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\calendar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\cart %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\cart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\close.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\cocktail %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\cocktail %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\cocktail.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete %283%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete-cart %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete-cart %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete-cart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\delete.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Black.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-BlackItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-BoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-ExtraBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-ExtraBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-ExtraLight.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-ExtraLightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Italic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-LightItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-MediumItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-SemiBoldItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-Thin.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\poppins\Poppins-ThinItalic.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\timeless-memories\TimelessMemoriesRegular-2vvwo.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\grid %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\grid %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\grid.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\list %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\list %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\list.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\market %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\market %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\market.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\minus %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\minus.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\pie-chart %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\pie-chart %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\pie-chart %283%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\pie-chart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\A5 Wagyu.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Absolut Vodka.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Apple C2.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Apple.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Avocado.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Bacardi Rum.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Banana.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\barcode.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Beef Flank.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Beef Ribeye.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Bell Pepper.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Blueberry.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\broken-image.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Carrot.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Casamigos Tequila.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Chicken Drumsticks.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Chicken Thigh.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Chicken Wings.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Classic C2.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Coke 1L.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Coke.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Eggplant.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Fanta 1L.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Fanta.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Garlic.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Gatorade.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Ginger.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Grapes.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Green Onion.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Kamunggay.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Kiwi.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Kopiko Lucky Day.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Lettuce.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Mango.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Mangosteen.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Onion.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Orange.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Pineapple.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Pork Belly.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Potato.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Red Horse 1L.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Sauvignon Blanc.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Sprite 1L.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Sprite.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Squash.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Strawberry.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Tomato.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Water 1L.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Water 500ml.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Watermelon.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Products\Whole Chicken.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\search %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\search %283%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\shopping-and-commerce.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\spinach %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\spinach %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\spinach.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\steak %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\steak %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\steak.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\storage %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\storage %282%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\storage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\store %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\store.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\user %281%29.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\user.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
