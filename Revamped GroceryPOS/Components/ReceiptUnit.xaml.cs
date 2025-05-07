@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,43 +16,37 @@ using System.Windows.Shapes;
 namespace Revamped_GroceryPOS.Components
 {
     /// <summary>
-    /// Interaction logic for ProductCard.xaml
+    /// Interaction logic for ReceiptUnit.xaml
     /// </summary>
-    public partial class ProductCard : UserControl
+    public partial class ReceiptUnit : UserControl
     {
-        public ProductCard()
+        public ReceiptUnit()
         {
             InitializeComponent();
         }
 
-        public ImageSource ImageSource
-        {
-            get { return image.Source; }    
-            set { image.Source = value; }
-        }
-
-        public required new string Name
+        public string Name
         {
             get { return name.Text; }
             set { name.Text = value; }
         }
 
-        public required double Price
+        public double Price
         {
             get { return double.Parse(price.Text); }
             set { price.Text = value.ToString("N2"); }
         }
 
-        public string Unit
+        public int Quantity
         {
-            get { return unit.Text; }
-            set { unit.Text = value; }
+            get { return int.Parse(quantity.Text); }
+            set { quantity.Text = value.ToString(); }
         }
 
-        public string? Category { get; set; }
-
-        public string? Description { get; set; }
-
-        public required int Quantity { get; set; }
+        public double Amount
+        {
+            get { return double.Parse(amount.Text); }
+            set { amount.Text = value.ToString("N2"); }
+        }
     }
 }

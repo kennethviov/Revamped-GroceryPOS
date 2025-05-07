@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         xmlns:local="clr-namespace:Revamped_GroceryPOS"
         mc:Ignorable="d"
         Title="Joshua Sarry Sarry Store" Height="720" Width="1280"
@@ -101,43 +102,39 @@
                     Margin="0,28,0,0">
 
                 <Grid>
-                    <Button Name="Menu"
+                    <Button Name="menu"
                             Height="24"
                             Width="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,24,12,644"
                             Cursor="Hand"
                             Click="Menu_Click">
-                        <Grid>
-                            <Image Name="UnclickedMenu"
-                                   Source="pack://application:,,,/Resources/Icons/list.png"/>
-                            <Image Name="ClickedMenu"
-                                   Source="pack://application:,,,/Resources/Icons/list (1).png"
-                                   Visibility="Hidden"/>
-                        </Grid>
+                        <Image Source="pack://application:,,,/Resources/Icons/list.png"/>
                     </Button>
 
-                    <Button Name="AllItems"
+                    <Button Name="allItemsBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,78,12,590"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <Grid>
                             <Image Name="UnclickedAllItems"
                                    Source="pack://application:,,,/Resources/Icons/grid.png"/>
                             <Image Name="ClickedAllItems"
                                    Source="pack://application:,,,/Resources/Icons/grid (1).png"
-                                   Visibility="Hidden"/>
+                                   Visibility="Visible"/>
                         </Grid>
                     </Button>
 
-                    <Button Name="Fruits"
+                    <Button Name="fruitsBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,132,12,536"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <Grid>
                             <Image Name="UnclickedFruits"
                                    Source="pack://application:,,,/Resources/Icons/apple.png"/>
@@ -147,12 +144,13 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="Vegetables"
+                    <Button Name="vegetablesBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,186,12,482"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <Grid>
                             <Image Name="UnclickedVegetables"
                                    Source="pack://application:,,,/Resources/Icons/spinach.png"/>
@@ -162,12 +160,13 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="Meats"
+                    <Button Name="meatsBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,240,12,428"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <Grid>
                             <Image Name="UnclickedMeats"
                                    Source="pack://application:,,,/Resources/Icons/steak.png"/>
@@ -177,12 +176,13 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="Drinks"
+                    <Button Name="drinksBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,294,12,374"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <Grid>
                             <Image Name="UnclickedDrinks"
                                    Source="pack://application:,,,/Resources/Icons/beverage.png"/>
@@ -192,12 +192,13 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="Liquor"
+                    <Button Name="liquorBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,348,12,320"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <Grid>
                             <Image Name="UnclickedLiquor"
                                    Source="pack://application:,,,/Resources/Icons/cocktail.png"/>
@@ -207,12 +208,13 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="Admin"
+                    <Button Name="adminBtn"
                             Width="24"
                             Height="24"
                             Style="{StaticResource TransparentHoverButtons}"
                             Margin="12,644,12,24"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="AdminBtn_Click">
                         <Grid>
                             <Image Name="UnclickedAdmin"
                                    Source="pack://application:,,,/Resources/Icons/user.png"/>
@@ -230,14 +232,113 @@
 
                 <Grid>
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="14,50,14,272">
+                        <WrapPanel Name="CartWrapPanel">
+                        </WrapPanel>
+                    </ScrollViewer>
+
+                    <TextBlock Text="Current Order"
+                               FontSize="20"
+                               FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold" 
+                               Margin="24,15,24,648"/>
+
+                    <Button Name="ClearCartButton"
+                            Width="24" Height="24"
+                            Style="{StaticResource TransparentHoverButtons}"
+                            Cursor="Hand"
+                            Margin="252,425,30,243"
+                            ToolTip="Clear Cart"
+                            Click="ClearCartButton_Click">
+                        <Image Source="pack://application:,,,/Resources/Icons/delete-cart (1).png"/>
+                    </Button>
+
+                    <Border Width="279" Height="171"
+                            CornerRadius="7"
+                            Background="#E4E4E4" Margin="13.5,454,13.5,67">
+                        <Grid>
+                            <TextBlock Text="subtotal"
+                                       FontSize="13"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       Foreground="#A7A7A7"
+                                       Margin="20,17,0,0"/>
+                            <TextBlock Text="discount%"
+                                       FontSize="13"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       Foreground="#A7A7A7"
+                                       Margin="20,42,0,0"/>
+                            <TextBlock Text="discount"
+                                       FontSize="13"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       Foreground="#A7A7A7"
+                                       Margin="20,67,0,0"/>
+                            <TextBlock Text="Total"
+                                       FontSize="17"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                       Foreground="Black"
+                                       Margin="20,138,0,0"/>
+
+                            <TextBlock Name="subtotalTxtblk"
+                                       Text="₱0.0"
+                                       FontSize="13"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       TextAlignment="Right"
+                                       Foreground="#A7A7A7"
+                                       Margin="0,17,20,0"/>
+                            <TextBlock Name="discountpTxtblk"
+                                       Text="00%"
+                                       FontSize="13"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       TextAlignment="Right"
+                                       Foreground="#A7A7A7"
+                                       Margin="0,42,20,0"/>
+                            <TextBlock Name="discountTxtblk"
+                                       Text="₱0.0"
+                                       FontSize="13"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                       TextAlignment="Right"
+                                       Foreground="#A7A7A7"
+                                       Margin="0,67,20,0"/>
+                            <TextBlock Name="totalTxtblk"
+                                       Text="₱0.0"
+                                       FontSize="17"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                       TextAlignment="Right"
+                                       Foreground="Black"
+                                       Margin="0,138,20,0"/>
+
+                            <Ellipse Width="27" Height="27"
+                                     Fill="White" 
+                                     Margin="-13.5,99,265,45"/>
+                            <Ellipse Width="27" Height="27"
+                                     Fill="White" 
+                                     Margin="266,99,-13.5,45"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Width="279" Height="42"
+                            CornerRadius="7"
+                            Background="#4C81F1" 
+                            Margin="13.5,637,13.5,13">
+                        <Button Name="CheckoutButton"
+                                Style="{StaticResource TransparentHoverButtons}"
+                                Click="CheckoutBtn_Click">
+                            <TextBlock Text="Checkout"
+                                    FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                    FontSize="16"
+                                    Foreground="White"/>
+                        </Button>
+                    </Border>
                 </Grid>
             </Border>
 
             <Border Name="TextAndSearch"
-                    Width="926"
                     Height="132"
                     Background="#FFF6F8FA" 
-                    Margin="48,28,306,560">
+                    Margin="84,28,344,560">
                 <Grid>
                     <TextBlock Text="welcome to"
                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
@@ -253,17 +354,15 @@
                 </Grid>
             </Border>
 
-            <Border Name="ProductsPane"
-                    Width="926"
-                    Height="560" 
-                    Margin="48,160,306,0">
+            <Border Name="ProductsPane" 
+                    Margin="84,160,344,10">
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
                         <WrapPanel Name="ProductsWrapPanel">
                         </WrapPanel>
                     </ScrollViewer>
@@ -278,8 +377,11 @@
                     Visibility="Collapsed">
                 <Button Name="KeepCollapsedSidePanel"
                         Style="{StaticResource TransparentHoverButtons}"
-                        Click="KeepCollapsedSidePanel_Click"/>
+                        Click="KeepCollapsedSidePanel_Click"
+                        Cursor="Arrow"/>
             </Border>
+
+            <!-- Collapsed Side Panel -->
 
             <Border Name="CollapsedSidePanel"
                     Background="White"
@@ -290,7 +392,7 @@
                     Visibility="Collapsed">
                 <Grid>
 
-                    <Button Name="CMenu"
+                    <Button Name="cmenu"
                             Style="{StaticResource TransparentHoverButton}"
                             Height="24"
                             Margin="12,24,12,644"
@@ -306,11 +408,12 @@
                         </Grid>
                     </Button>
 
-                    <Button Name="CAllItems"
+                    <Button Name="callItemsBtn"
                             Style="{StaticResource TransparentHoverButton}"
                             Height="24"
                             Margin="12,78,12,590"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <Image Name="CUnclickedAllItems"
@@ -328,11 +431,12 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Name="CFruits"
+                    <Button Name="cfruitsBtn"
                             Height="24"
                             Style="{StaticResource TransparentHoverButton}"
                             Margin="12,132,12,536"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <Image Name="CUnclickedFruits"
@@ -348,14 +452,15 @@
                                        VerticalAlignment="Center"
                                        Margin="19,0,0,0"/>
                         </StackPanel>
-                        
+
                     </Button>
 
-                    <Button Name="CVegetables"
+                    <Button Name="cvegetablesBtn"
                             Height="24"
                             Style="{StaticResource TransparentHoverButton}"
                             Margin="12,186,12,482"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <Image Name="CUnclickedVegetables"
@@ -373,11 +478,12 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Name="CMeats"
+                    <Button Name="cmeatsBtn"
                             Height="24"
                             Style="{StaticResource TransparentHoverButton}"
                             Margin="12,240,12,428"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <Image Name="CUnclickedMeats"
@@ -395,11 +501,12 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Name="CDrinks" 
+                    <Button Name="cdrinksBtn" 
                             Height="24"
                             Style="{StaticResource TransparentHoverButton}"
                             Margin="12,294,12,374"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <Image Name="CUnclickedDrinks"
@@ -417,11 +524,12 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Name="CLiquor"
+                    <Button Name="cliquorBtn"
                             Height="24"
                             Style="{StaticResource TransparentHoverButton}"
                             Margin="12,348,12,320"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="CatBtns_Click">
                         <StackPanel Orientation="Horizontal">
                             <Grid>
                                 <Image Name="CUnclickedLiquor"
@@ -439,11 +547,12 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Name="CAdmin"
+                    <Button Name="cadminBtn"
                             Height="24"
                             Style="{StaticResource TransparentHoverButton}"
                             Margin="12,644,12,24"
-                            Cursor="Hand">
+                            Cursor="Hand"
+                            Click="AdminBtn_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Name="CUnclickedAdmin"
                                     Source="pack://application:,,,/Resources/Icons/user.png"/>
@@ -458,8 +567,809 @@
                 </Grid>
             </Border>
 
-            
+            <!--
+                This is the admin panel
+            -->
 
+            <Border Name="AdminPanel"
+                Height="692"
+                Background="#F6F8FA"
+                VerticalAlignment="Bottom"
+                Visibility="Hidden"
+                CornerRadius="0,0,12,12">
+
+                <Grid>
+                    <Border Name="AdminDefaultSidePanel"
+                        Background="White"
+                        Width="48"
+                        HorizontalAlignment="Left"
+                        CornerRadius="0,0,0,12">
+
+                        <Grid>
+                            <Button Name="amenu"
+                                Height="24"
+                                Width="24"
+                                Style="{StaticResource TransparentHoverButtons}"
+                                Margin="12,24,12,644"
+                                Cursor="Hand"
+                                Click="Menu_Click">
+                                <Image Name="unclickedMenu"
+                                        Source="pack://application:,,,/Resources/Icons/list.png"/>
+                            </Button>
+
+                            <Button Name="reportsBtn"
+                                Width="24"
+                                Height="24"
+                                Style="{StaticResource TransparentHoverButtons}"
+                                Margin="12,78,12,590"
+                                Cursor="Hand"
+                                Click="CatBtns_Click">
+                                <Grid>
+                                    <Image Name="unclickedreports"
+                                        Source="pack://application:,,,/Resources/Icons/pie-chart.png"/>
+                                    <Image Name="clickedreports"
+                                        Source="pack://application:,,,/Resources/Icons/pie-chart (2).png"
+                                        Visibility="Hidden"/>
+                                </Grid>
+                            </Button>
+
+                            <Button Name="inventoryBtn"
+                                Width="24"
+                                Height="24"
+                                Style="{StaticResource TransparentHoverButtons}"
+                                Margin="12,132,12,536"
+                                Cursor="Hand"
+                                Click="CatBtns_Click">
+                                <Grid>
+                                    <Image Name="unclickedinv"
+                                        Source="pack://application:,,,/Resources/Icons/storage.png"/>
+                                    <Image Name="clickedinv"
+                                        Source="pack://application:,,,/Resources/Icons/storage (1).png"
+                                        Visibility="Hidden"/>
+                                </Grid>
+                            </Button>
+
+                            <Button Name="storeBtn"
+                                Width="24"
+                                Height="24"
+                                Style="{StaticResource TransparentHoverButtons}"
+                                Margin="12,644,12,24"
+                                Cursor="Hand"
+                                Click="StoreBtn_Click">
+                                <Image Source="pack://application:,,,/Resources/Icons/store (1).png"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+
+                    <!-- Reports Panel -->
+
+                    <Border Name="ReportsPanel"
+                    Height="692" Width="1232"
+                    Background="#F6F8FA"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Visibility="Visible"
+                    CornerRadius="12">
+                        <Grid>
+                            <TextBlock Text="Reports"
+                                FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                                FontWeight="Bold"
+                                FontSize="25"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Margin="30,25,0,0"/>
+
+                            <Border Width="175" Height="40"
+                                    CornerRadius="7"
+                                    Background="#4C81F1"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,25,20,0">
+                                <Button Name="DownLoadReport"
+                                        Style="{StaticResource TransparentHoverButtons}"
+                                        Click="DownLoadReport_Click">
+                                    <TextBlock Text="Download Report"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                            FontSize="16"
+                                            Foreground="White"/>
+                                </Button>
+                            </Border>
+
+                            <Border Width="175" Height="40"
+                                    CornerRadius="7"
+                                    Background="#4C81F1"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,25,215,0">
+                                <Button Name="GenerateReport"
+                                        Style="{StaticResource TransparentHoverButtons}"
+                                        Click="GenerateReport_Click">
+                                    <TextBlock Text="Generate Report"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                            FontSize="16"
+                                            Foreground="White"/>
+
+                                </Button>
+                            </Border>
+
+                            <TextBlock Text="From"
+                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                FontSize="12"
+                                Foreground="Gray"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="0,29,125,0"/>
+                            
+                            <Border Width="112" Height="40"
+                                CornerRadius="7"
+                                Background="White"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                Margin="0,25,550,0">
+                                <DatePicker Name="FromDate"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"/>
+                            </Border>
+
+                            <TextBlock Text="To"
+                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                FontSize="12"
+                                Foreground="Gray"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="170,29,0,0"/>
+                            
+                            <Border Width="112" Height="40"
+                                    CornerRadius="7"
+                                    Background="White"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,25,410,0">
+                                <DatePicker Name="ToDate"
+                                    BorderBrush="Transparent"
+                                    Background="Transparent"/>
+                            </Border>
+
+                            <Grid Width="616" Height="612"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom" Margin="0,0,0,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                    <WrapPanel>
+                                        <StackPanel Margin="10"
+                                            Background="White">
+                                            <TextBlock Text="Income Report" 
+                                                FontWeight="Bold" FontSize="20" 
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                                Margin="50,10,10,10"/>
+                                            <lvc:CartesianChart Series="{Binding MySeries}"
+                                                        XAxes="{Binding XAxes}"
+                                                        YAxes="{Binding YAxes}"
+                                                        LegendPosition="Right"
+                                                        Height="350"
+                                                        Width="596"/>
+                                        </StackPanel>
+                                        <StackPanel Margin="10,10,10,0"
+                                            Background="White">
+                                            <TextBlock Text="Top Performing Items"      
+                                                FontWeight="Bold" FontSize="20"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                                Margin="50,10,10,10"/>
+                                            <lvc:PieChart Series="{Binding MyPieSeries}" 
+                                                    LegendPosition="Right"
+                                                    Width="596" Height="350"/>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </ScrollViewer>
+                            </Grid>
+
+                            <Grid Width=" 616" Height="612"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Margin="0,0,10,10">
+                                <Border Width="182" Height="98"
+                                CornerRadius="7"
+                                Background="White" 
+                                Margin="10,10,424,504">
+                                    <Grid>
+                                        <TextBlock Text="Total Transactions"
+                                            FontSize="11"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                            Foreground="Gray"
+                                            Margin="7"/>
+                                        <TextBlock Name="TotalTransactions"
+                                            Text="0"
+                                            FontSize="30"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                            Margin="7"
+                                            VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                </Border>
+
+                                <Border Width="182" Height="98"
+                                CornerRadius="7"
+                                Background="White" 
+                                Margin="217,10,217,504">
+                                    <Grid Margin="10,0,10,0">
+                                        <TextBlock Text="Total Income"
+                                            FontSize="11"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                            Foreground="Gray"
+                                            Margin="7"/>
+                                        <Viewbox Stretch="Uniform" 
+                                            VerticalAlignment="Bottom" 
+                                            Margin="7" 
+                                            HorizontalAlignment="Left"
+                                            Width="145" Height="48">
+                                            <TextBlock Name="TotalIncome"
+                                                Text="0"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                TextAlignment="Right"
+                                                HorizontalAlignment="Right" />
+                                        </Viewbox>
+                                    </Grid>
+                                </Border>
+
+                                <Border Width="182" Height="98"
+                                CornerRadius="7"
+                                Background="White" 
+                                Margin="425,10,9,504">
+                                    <Grid Margin="10,0,-10,0">
+                                        <TextBlock Text="Total Items Sold"
+                                            FontSize="11"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                            Foreground="Gray"
+                                            Margin="7"/>
+                                        <TextBlock Name="TotalItemsSold"
+                                            Text="0"
+                                            FontSize="30"
+                                            FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                            Margin="7"
+                                            VerticalAlignment="Bottom"/>
+                                    </Grid>
+                                </Border>
+
+                                <TextBlock Text="Transactions"
+                                    FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                                    FontWeight="Bold"
+                                    FontSize="25"
+                                    Width="168" Height="29" Margin="17,128,431,455"/>
+
+                                <Border Height="450"
+                                VerticalAlignment="Bottom"
+                                Background="White"
+                                CornerRadius="7" Margin="12,0,0,0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,28,0,0">
+                                            <WrapPanel Name="TransactionsWrapPanel">
+                                            </WrapPanel>
+                                        </ScrollViewer>
+
+                                        <Border Height="28"
+                                        Background="#DAE7F4"
+                                        CornerRadius="7,7,0,0"
+                                        VerticalAlignment="Top">
+                                            <Grid>
+                                                <TextBlock Text="Transaction ID"
+                                                    FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                    Foreground="Gray"
+                                                    FontSize="11" 
+                                                    Width="79" Height="17"
+                                                    HorizontalAlignment="Left"
+                                                    Margin="20,0,0,0"/>
+                                                <TextBlock Text="Date"
+                                                    FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                    Foreground="Gray"
+                                                    FontSize="11"
+                                                    Width="27" Height="17"/>
+                                                <TextBlock Text="Total"
+                                                    FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                    Foreground="Gray"
+                                                    FontSize="11"
+                                                    Width="30" Height="17"
+                                                    HorizontalAlignment="Right"
+                                                    Margin="0,0,20,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Inventory Panel -->
+
+                    <Border Name="InventoryPanel"
+                            Height="692" Width="1232"
+                            Background="#F6F8FA"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Visibility="Hidden"
+                            CornerRadius="12">
+                        <Grid>
+                            <TextBlock Text="Inventory"
+                                       FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                                       FontWeight="Bold"
+                                       FontSize="25"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Left"
+                                       Margin="30,25,0,0"/>
+                            <Button Name="edititembtn"
+                                    Width="24" Height="24"
+                                    Style="{StaticResource TransparentHoverButtons}"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,48,30,0"
+                                    ToolTip="Edit Item"
+                                    Click="edititembtn_Click">
+                                <Image Source="pack://application:,,,/Resources/Icons/edit.png"/>
+                            </Button>
+                            <Button Name="additembtn"
+                                    Width="24" Height="24"
+                                    Style="{StaticResource TransparentHoverButtons}"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,48,70,0"
+                                    ToolTip="Add Item"
+                                    Click="additembtn_Click">
+                                <Image Source="pack://application:,,,/Resources/Icons/queue (1).png"/>
+                            </Button>
+                            <Button Name="deleteitembtn"
+                                    Width="24" Height="24"
+                                    Style="{StaticResource TransparentHoverButtons}"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,48,110,0"
+                                    ToolTip="Delete Item"
+                                    Click="deleteitembtn_Click">
+                                <Image Source="pack://application:,,,/Resources/Icons/trash-bin.png"/>
+                            </Button>
+
+                            <Border Width="1212" Height="28"
+                                    Background="#DAE7F4"
+                                    CornerRadius="7,7,0,0"
+                                    VerticalAlignment="Top"
+                                    Margin="0,80,0,0">
+                                <Grid>
+                                    <TextBlock Text="Item ID"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                Foreground="Gray"
+                                                FontSize="13" 
+                                                Width="46" Height="18"
+                                                HorizontalAlignment="Left"
+                                                Margin="30,0,0,0"/>
+                                    <TextBlock Text="Item"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                Foreground="Gray"
+                                                FontSize="13" 
+                                                Width="73" Height="18"
+                                                HorizontalAlignment="Left"
+                                                Margin="205,5,0,5"/>
+                                    <TextBlock Text="Price"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                Foreground="Gray"
+                                                FontSize="13" 
+                                                Width="32" Height="18"
+                                                HorizontalAlignment="Left"
+                                                Margin="450,0,0,0"/>
+                                    <TextBlock Text="Sold By"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                Foreground="Gray"
+                                                FontSize="13"
+                                                Width="47" Height="18"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,500,0"/>
+                                    <TextBlock Text="Category"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                Foreground="Gray"
+                                                FontSize="13"
+                                                Width="60" Height="18"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,260,0"/>
+                                    <TextBlock Text="Stock"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                                Foreground="Gray"
+                                                FontSize="13"
+                                                Width="35" Height="18"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,30,0"/>
+                                </Grid>
+                            </Border>
+                            <Border Height="583" Width="1212"
+                                    Background="White"
+                                    VerticalAlignment="Bottom">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                        <WrapPanel Name="InventoryPane">
+                                        </WrapPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Border>
+
+                            <!-- 
+                            Collapsable Panels
+                            -->
+                            <!-- Edit Panel -->
+                            <Border Name="EditItemPanel"
+                                    Width="400"
+                                    HorizontalAlignment="Right"
+                                    Background="#E3F4E1"
+                                    Visibility="Hidden">
+                                <Grid>
+                                    <Button Name="closeeditpanel"
+                                        Width="24" Height="24"
+                                        Style="{StaticResource TransparentHoverButtons}"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,25,30,0"
+                                        ToolTip="Close Panel"
+                                        Click="closeeditpanel_Click">
+                                        <Image Source="pack://application:,,,/Resources/Icons/show.png"/>
+                                    </Button>
+
+                                    <TextBlock Text="Edit Item"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                                        FontWeight="Bold"
+                                        FontSize="20"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="30,25,0,0"/>
+
+                                    <TextBlock Text="Item ID"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,90,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox Name="EditItemID"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,113,30,546"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent" Text=""/>
+
+                                    <TextBlock Text="Name"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,162,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="EditItemName"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,185,30,474"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Price"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,245,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="EditItemPrice"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,268,30,391"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Category"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,323,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="EditItemCat"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,346,30,313"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Sold By"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,403,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="EditItemSoldBy"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,426,30,233"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Stock"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,488,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="EditItemStock"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,511,30,148"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Name="editwarningblk"
+                                        Text="Please don't leave any areas blank."
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        Foreground="Gray"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,70"/>
+
+                                    <Border Background="#109618"
+                                        Width="336" Height="40"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,30"
+                                            CornerRadius="7">
+                                        <Button Name="savechangesbtn"
+                                            Style="{StaticResource TransparentHoverButtons}"
+                                                Click="savechangesbtn_Click">
+                                            <TextBlock Text="Save Changes"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                                FontSize="16"
+                                                Foreground="White"/>
+                                        </Button>
+                                    </Border>
+                                </Grid>
+                            </Border>
+
+                            <!-- Add Panel -->
+
+                            <Border Name="AddItemPanel"
+                                Width="400"
+                                HorizontalAlignment="Right"
+                                Background="AliceBlue"
+                                Visibility="Hidden">
+                                <Grid>
+                                    <Button Name="closeaddpanel"
+                                        Width="24" Height="24"
+                                        Style="{StaticResource TransparentHoverButtons}"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,25,30,0"
+                                        ToolTip="Close Panel"
+                                        Click="closeaddpanel_Click">
+                                        <Image Source="pack://application:,,,/Resources/Icons/show.png"/>
+                                    </Button>
+
+                                    <Image Name="ProductImage"
+                                        Source="pack://application:,,,/Resources/Icons/broken-image.png"
+                                        Width="150" Height="150"
+                                        VerticalAlignment="Top"
+                                        Margin="0,50,0,0"/>
+
+                                    <TextBlock Text="Add Item"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                                        FontWeight="Bold"
+                                        FontSize="20"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="30,25,0,0"/>
+
+                                    <TextBlock Text="Name"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,278,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="AddItemName"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,301,30,358"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Price"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,361,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="AddItemPrice"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,384,30,275"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Category"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,439,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="AddItemCat"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,462,30,197"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Sold By"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,519,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="AddItemSoldBy"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,542,222,117" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Text="Stock"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="227,519,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="AddItemStock"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="222,542,30,117" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+
+                                    <TextBlock Name="addwarningblk"
+                                        Text="Please don't leave any areas blank."
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        Foreground="Gray"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,70"/>
+
+                                    <Border Background="#4C81F1"
+                                        Width="336" Height="40"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,30"
+                                        CornerRadius="7">
+                                        <Button Name="addbtn"
+                                            Style="{StaticResource TransparentHoverButtons}"
+                                                Click="addbtn_Click">
+                                            <TextBlock Text="Add Item"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                                FontSize="16"
+                                                Foreground="White"/>
+                                        </Button>
+                                    </Border>
+                                    
+                                    <TextBlock Text="Image Path"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,198,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox x:Name="filePath"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,221,30,438"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent"/>
+                                </Grid>
+                            </Border>
+                            
+                            <!-- Delete Panel -->
+
+                            <Border Name="DeleteItemPanel"
+                                Width="400"
+                                HorizontalAlignment="Right"
+                                Background="#F4E5E1"
+                                Visibility="Hidden">
+                                <Grid>
+                                    <Button Name="closedelpanel"
+                                        Width="24" Height="24"
+                                        Style="{StaticResource TransparentHoverButtons}"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,25,30,0"
+                                        ToolTip="Close Panel"
+                                        Click="closedelpanel_Click">
+                                        <Image Source="pack://application:,,,/Resources/Icons/show.png"/>
+                                    </Button>
+
+                                    <TextBlock Text="Delete Item"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
+                                        FontWeight="Bold"
+                                        FontSize="20"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="30,25,0,0"/>
+
+                                    <TextBlock Text="Item ID"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left"
+                                        Margin="35,90,0,0"
+                                        Foreground="Gray"/>
+                                    <TextBox Name="DeleteItemID"
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        FontSize="13"
+                                        Margin="30,113,30,546"
+                                        Width="340" Height="33"
+                                        Background="White"
+                                        TextAlignment="Left"
+                                        TextWrapping="Wrap"
+                                        BorderBrush="Transparent" Text=""/>
+
+                                    <TextBlock Name="delwarningblk"
+                                        Text="Please don't leave any areas blank."
+                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                                        Foreground="Gray"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,70"/>
+
+                                    <Border Background="#DC3912"
+                                        Width="336" Height="40"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0,0,0,30"
+                                        CornerRadius="7">
+                                        <Button Name="deletebtn"
+                                            Style="{StaticResource TransparentHoverButtons}"
+                                            Click="deletebtn_Click">
+                                            <TextBlock Text="Delete"
+                                                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                                                FontSize="16"
+                                                Foreground="White"/>
+                                        </Button>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
         </Grid>
     </Border>
 </Window>

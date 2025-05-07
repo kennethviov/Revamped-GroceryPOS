@@ -38,10 +38,10 @@
                        TextWrapping="Wrap"/>
 
             <TextBlock Name="price"
-                       Text="P0.0"
+                       Text="0.0"
                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
                        FontSize="15"
-                       Margin="12,163,35,15"/>
+                       Margin="23,163,35,15"/>
 
             <TextBlock Name="unit"
                        Text="/unit"
@@ -49,6 +49,11 @@
                        FontSize="10"
                        Foreground="Gray"
                        Margin="12,180,61,4"/>
+            <TextBlock x:Name="price_Copy"
+                Text="₱"
+                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                FontSize="15"
+                Margin="12,163,137,15"/>
         </Grid>
     </Border>
 </UserControl>

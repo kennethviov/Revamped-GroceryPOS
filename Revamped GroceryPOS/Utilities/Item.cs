@@ -10,6 +10,8 @@ namespace Revamped_GroceryPOS.Utilities
 {
     class Item
     {
+        public int? ID { get; set; }
+
         public Image? Image { get; set; }
 
         public required string Name { get; set; }

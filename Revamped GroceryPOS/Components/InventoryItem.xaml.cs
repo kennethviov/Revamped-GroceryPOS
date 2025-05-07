@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,43 +16,55 @@ using System.Windows.Shapes;
 namespace Revamped_GroceryPOS.Components
 {
     /// <summary>
-    /// Interaction logic for ProductCard.xaml
+    /// Interaction logic for InventoryItem.xaml
     /// </summary>
-    public partial class ProductCard : UserControl
+    public partial class InventoryItem : UserControl
     {
-        public ProductCard()
+        public InventoryItem()
         {
             InitializeComponent();
         }
 
+        public int? ID
+        {
+            get { return int.TryParse(id.Text, out int idValue) ? idValue : null; }
+            set { id.Text = value?.ToString(); }
+        }
+
         public ImageSource ImageSource
         {
-            get { return image.Source; }    
+            get { return image.Source; }
             set { image.Source = value; }
         }
 
-        public required new string Name
+        public string Name
         {
             get { return name.Text; }
             set { name.Text = value; }
         }
 
-        public required double Price
+        public double Price
         {
             get { return double.Parse(price.Text); }
             set { price.Text = value.ToString("N2"); }
         }
 
-        public string Unit
+        public string? SoldBy
         {
-            get { return unit.Text; }
-            set { unit.Text = value; }
+            get { return soldby.Text; }
+            set { soldby.Text = value; }
         }
 
-        public string? Category { get; set; }
+        public string? Category
+        {
+            get { return category.Text; }
+            set { category.Text = value; }
+        }
 
-        public string? Description { get; set; }
-
-        public required int Quantity { get; set; }
+        public int Stock
+        {
+            get { return int.Parse(stock.Text); }
+            set { stock.Text = value.ToString(); }
+        }
     }
 }

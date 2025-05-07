@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Revamped_GroceryPOS.Components.CartItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Revamped_GroceryPOS.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="278">
+    <Border Width="278" Height="80"
+            CornerRadius="7"
+            Background="White">
+
+        <Grid>
+            <Border CornerRadius="7"
+                    Width="80" Height="80"
+                    HorizontalAlignment="Left">
+                <Image Name="image"
+                       Source="pack://application:,,,/Resources/Products/broken-image.png"/>
+            </Border>
+            <TextBlock Name="name"
+                       Text="lorem ipsum lorem ipsum "
+                       FontSize="12"
+                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                       Width="131" Height="36"
+                       TextWrapping="Wrap" Margin="88,9,59,35"/>
+            <TextBlock Name="price"
+                       Text="0.0"
+                       FontSize="13"
+                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                       Foreground="#3511D3" 
+                       Margin="98,53,65,8"/>
+            <TextBlock Name="quantity"
+                       Text="1"
+                       FontSize="12"
+                       FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
+                       Margin="228,55,21,8"
+                       TextAlignment="Center"/>
+
+            <Border Width="14" Height="14"
+                    CornerRadius="2"
+                    Background="#3511D3" 
+                    Margin="214,56,50,10">
+                <Button Name="incrementer"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Click="Incrementer_Click">
+                    <Image Source="pack://application:,,,/Resources/Icons/add.png"
+                           Width="6" Height="6"/>
+                </Button>
+            </Border>
+            <Border Width="14" Height="14"
+                    CornerRadius="2"
+                    Background="#3511D3" 
+                    Margin="257,56,7,10">
+                <Button Name="decrementer"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Click="Decrementer_Click">
+                    <Image Source="pack://application:,,,/Resources/Icons/minus (2).png"
+                           Width="6" Height="6"/>
+                </Button>
+            </Border>
+            <TextBlock x:Name="price_Copy"
+                Text="₱"
+                FontSize="13"
+                FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
+                Foreground="#3511D3" 
+                Margin="90,53,177,7"/>
+
+        </Grid>
+    </Border>
+</UserControl>

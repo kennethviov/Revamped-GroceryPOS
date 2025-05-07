@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <RootNamespace>Revamped_GroceryPOS</RootNamespace>
     <Nullable>enable</Nullable>
@@ -54,6 +54,19 @@
     <None Remove="Resources\grid %281%29.png" />
     <None Remove="Resources\grid %282%29.png" />
     <None Remove="Resources\grid.png" />
+    <None Remove="Resources\Icons\24x24grid.png" />
+    <None Remove="Resources\Icons\add.png" />
+    <None Remove="Resources\Icons\arrow %281%29.png" />
+    <None Remove="Resources\Icons\arrow.png" />
+    <None Remove="Resources\Icons\broken-image.png" />
+    <None Remove="Resources\Icons\downloads.png" />
+    <None Remove="Resources\Icons\edit.png" />
+    <None Remove="Resources\Icons\minus %282%29.png" />
+    <None Remove="Resources\Icons\Project QR.png" />
+    <None Remove="Resources\Icons\queue %281%29.png" />
+    <None Remove="Resources\Icons\queue.png" />
+    <None Remove="Resources\Icons\show.png" />
+    <None Remove="Resources\Icons\trash-bin.png" />
     <None Remove="Resources\list %281%29.png" />
     <None Remove="Resources\list %282%29.png" />
     <None Remove="Resources\list.png" />
@@ -136,10 +149,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiveCharts" Version="0.9.7" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.4" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="6.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Icons\24x24grid.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\add.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Icons\apple %281%29.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -149,6 +172,12 @@
     <Resource Include="Resources\Icons\apple.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Icons\arrow (1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\arrow.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Icons\beverage %281%29.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -156,6 +185,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Icons\beverage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\broken-image.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Icons\calendar %281%29.png">
@@ -263,6 +295,12 @@
     <Resource Include="Resources\Fonts\timeless-memories\TimelessMemoriesRegular-2vvwo.otf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Icons\downloads.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\edit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Icons\grid %281%29.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -293,6 +331,9 @@
     <Resource Include="Resources\Icons\minus %281%29.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Icons\minus (2).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Icons\minus.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -306,6 +347,21 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Icons\pie-chart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\Project QR.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\queue (1).png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\queue.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\show.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Icons\trash-bin.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Products\A5 Wagyu.jpg">
