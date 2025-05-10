@@ -609,7 +609,7 @@
                                         Source="pack://application:,,,/Resources/Icons/pie-chart.png"/>
                                     <Image Name="clickedreports"
                                         Source="pack://application:,,,/Resources/Icons/pie-chart (2).png"
-                                        Visibility="Hidden"/>
+                                        Visibility="Visible"/>
                                 </Grid>
                             </Button>
 
@@ -699,7 +699,7 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Margin="0,29,125,0"/>
-                            
+
                             <Border Width="112" Height="40"
                                 CornerRadius="7"
                                 Background="White"
@@ -718,7 +718,7 @@
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Margin="170,29,0,0"/>
-                            
+
                             <Border Width="112" Height="40"
                                     CornerRadius="7"
                                     Background="White"
@@ -754,7 +754,7 @@
                                         </StackPanel>
                                         <StackPanel Margin="10,10,10,0"
                                             Background="White">
-                                            <TextBlock Text="Top Performing Items"      
+                                            <TextBlock Text="Top Sold Items"      
                                                 FontWeight="Bold" FontSize="20"
                                                 FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins Bold"
                                                 Margin="50,10,10,10"/>
@@ -1123,7 +1123,7 @@
                                         BorderBrush="Transparent"/>
 
                                     <TextBlock Name="editwarningblk"
-                                        Text="Please don't leave any areas blank."
+                                        Text="Please don't leave the item ID blank."
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         Foreground="Gray"
                                         HorizontalAlignment="Center"
@@ -1166,12 +1166,6 @@
                                         <Image Source="pack://application:,,,/Resources/Icons/show.png"/>
                                     </Button>
 
-                                    <Image Name="ProductImage"
-                                        Source="pack://application:,,,/Resources/Icons/broken-image.png"
-                                        Width="150" Height="150"
-                                        VerticalAlignment="Top"
-                                        Margin="0,50,0,0"/>
-
                                     <TextBlock Text="Add Item"
                                         FontFamily="pack://application:,,,/Resources/Fonts/timeless-memories/#Timeless Memories"
                                         FontWeight="Bold"
@@ -1184,12 +1178,12 @@
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
-                                        Margin="35,278,0,0"
+                                        Margin="35,84,0,0"
                                         Foreground="Gray"/>
                                     <TextBox x:Name="AddItemName"
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         FontSize="13"
-                                        Margin="30,301,30,358"
+                                        Margin="30,108,30,552"
                                         Width="340" Height="33"
                                         Background="White"
                                         TextAlignment="Left"
@@ -1200,12 +1194,12 @@
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
-                                        Margin="35,361,0,0"
+                                        Margin="33,175,0,0"
                                         Foreground="Gray"/>
                                     <TextBox x:Name="AddItemPrice"
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         FontSize="13"
-                                        Margin="30,384,30,275"
+                                        Margin="28,198,32,461"
                                         Width="340" Height="33"
                                         Background="White"
                                         TextAlignment="Left"
@@ -1216,12 +1210,12 @@
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
-                                        Margin="35,439,0,0"
+                                        Margin="35,270,0,0"
                                         Foreground="Gray"/>
                                     <TextBox x:Name="AddItemCat"
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         FontSize="13"
-                                        Margin="30,462,30,197"
+                                        Margin="30,292,30,366"
                                         Width="340" Height="33"
                                         Background="White"
                                         TextAlignment="Left"
@@ -1232,12 +1226,12 @@
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
-                                        Margin="35,519,0,0"
+                                        Margin="35,369,0,0"
                                         Foreground="Gray"/>
                                     <TextBox x:Name="AddItemSoldBy"
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         FontSize="13"
-                                        Margin="30,542,222,117" Height="33"
+                                        Margin="30,392,222,267" Height="33"
                                         Background="White"
                                         TextAlignment="Left"
                                         TextWrapping="Wrap"
@@ -1247,12 +1241,12 @@
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
-                                        Margin="227,519,0,0"
+                                        Margin="227,369,0,0"
                                         Foreground="Gray"/>
                                     <TextBox x:Name="AddItemStock"
                                         FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
                                         FontSize="13"
-                                        Margin="222,542,30,117" Height="33"
+                                        Margin="222,392,30,267" Height="33"
                                         Background="White"
                                         TextAlignment="Left"
                                         TextWrapping="Wrap"
@@ -1280,25 +1274,9 @@
                                                 Foreground="White"/>
                                         </Button>
                                     </Border>
-                                    
-                                    <TextBlock Text="Image Path"
-                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
-                                        VerticalAlignment="Top"
-                                        HorizontalAlignment="Left"
-                                        Margin="35,198,0,0"
-                                        Foreground="Gray"/>
-                                    <TextBox x:Name="filePath"
-                                        FontFamily="pack://application:,,,/Resources/Fonts/poppins/#Poppins"
-                                        FontSize="13"
-                                        Margin="30,221,30,438"
-                                        Width="340" Height="33"
-                                        Background="White"
-                                        TextAlignment="Left"
-                                        TextWrapping="Wrap"
-                                        BorderBrush="Transparent"/>
                                 </Grid>
                             </Border>
-                            
+
                             <!-- Delete Panel -->
 
                             <Border Name="DeleteItemPanel"

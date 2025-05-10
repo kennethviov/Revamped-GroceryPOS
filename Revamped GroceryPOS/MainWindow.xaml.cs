@@ -41,9 +41,8 @@ namespace Revamped_GroceryPOS
 
             previmg = ClickedAllItems;
             prevbrdr = ReportsPanel;
-
             dh = new DataHandler();
-            items = dh.LoadItemsFromDatabase();
+            
             productCards = new List<ProductCard>();
 
             LoadProducts();
@@ -62,6 +61,8 @@ namespace Revamped_GroceryPOS
         {
             StoreToProductCard();
 
+            ProductsWrapPanel.Children.Clear();
+
             foreach (var productCard in productCards)
             {
                 productCard.MouseDoubleClick += ProductCard_Click;
@@ -71,6 +72,8 @@ namespace Revamped_GroceryPOS
 
         private void StoreToProductCard()
         {
+            items = dh.LoadItemsFromDatabase();
+
             foreach (var item in items)
             {
                 ProductCard productCard = new ProductCard()
@@ -602,6 +605,47 @@ namespace Revamped_GroceryPOS
          * Mouse Events 
          *
          */
+
+        /* Side Panel */
+        string ccurrCat = "reports";
+        Image cprevimg;
+        Border cprevbrdr;
+        private void AdmBtns_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && !string.IsNullOrEmpty(button.Name))
+            {
+                string btn = button.Name;
+
+                if (currCat == btn) return;
+
+                currCat = btn;
+
+                if (btn == "reportsBtn")
+                {
+                    ReportsPanel.Visibility = Visibility.Visible;
+                    clickedreports.Visibility = Visibility.Visible;
+                    previmg.Visibility = Visibility.Hidden;
+                    previmg = clickedreports;
+                    prevbrdr.Visibility = Visibility.Hidden;
+                    prevbrdr = ReportsPanel;
+                }
+                else if (btn == "inventoryBtn")
+                {
+                    InventoryPanel.Visibility = Visibility.Visible;
+                    clickedinv.Visibility = Visibility.Visible;
+                    previmg.Visibility = Visibility.Hidden;
+                    previmg = clickedinv;
+                    prevbrdr.Visibility = Visibility.Hidden;
+                    prevbrdr = InventoryPanel;
+                }
+                if (btn[0] == 'c')
+                {
+                    KeepCollapsedSidePanel_Click(sender, e);
+                }
+            }
+        }
+
+
         private void StoreBtn_Click(object sender, RoutedEventArgs e)
         {
             AdminPanel.Visibility = Visibility.Hidden;
@@ -648,9 +692,41 @@ namespace Revamped_GroceryPOS
                 string.IsNullOrWhiteSpace(EditItemSoldBy.Text) ||
                 string.IsNullOrWhiteSpace(EditItemStock.Text))
             {
-                addwarningblk.Text = "Please fill in all the fields before saving changes.";
-                addwarningblk.Foreground = new SolidColorBrush(Colors.Red);
-                return; // Don't proceed with saving
+                if (string.IsNullOrWhiteSpace(EditItemID.Text))
+                {
+                    editwarningblk.Text = "Please fill in the Item ID before saving changes.";
+                    editwarningblk.Foreground = new SolidColorBrush(Colors.Red);
+                    return; // Don't proceed with saving
+                }
+                
+                var item = items.FirstOrDefault(i => i.ID == int.Parse(EditItemID.Text));
+                if (item == null)
+                {
+                    editwarningblk.Text = "Item not found.";
+                    editwarningblk.Foreground = new SolidColorBrush(Colors.Red);
+                    return; // Don't proceed with saving
+                }
+
+                if (string.IsNullOrWhiteSpace(EditItemName.Text))
+                {
+                    EditItemName.Text = item.Name.ToString();
+                }
+                if (string.IsNullOrWhiteSpace(EditItemPrice.Text))
+                {
+                    EditItemPrice.Text = item.Price.ToString();
+                }
+                if (string.IsNullOrWhiteSpace(EditItemCat.Text))
+                {
+                    EditItemCat.Text = item.Category.ToString();
+                }
+                if (string.IsNullOrWhiteSpace(EditItemSoldBy.Text))
+                {
+                    EditItemSoldBy.Text = item.SoldBy.ToString();
+                }
+                if (string.IsNullOrWhiteSpace(EditItemStock.Text))
+                {
+                    EditItemStock.Text = item.Stock.ToString();
+                }
             }
 
             try
@@ -666,27 +742,28 @@ namespace Revamped_GroceryPOS
 
                 if (success)
                 {
-                    addwarningblk.Text = "Item updated successfully!";
-                    addwarningblk.Foreground = new SolidColorBrush(Colors.Green);
+                    editwarningblk.Text = "Item updated successfully!";
+                    editwarningblk.Foreground = new SolidColorBrush(Colors.Green);
+                    ClearAllFields();
+                    RefreshUI();
                 }
                 else
                 {
-                    addwarningblk.Text = "Item update failed.";
-                    addwarningblk.Foreground = new SolidColorBrush(Colors.Red);
+                    editwarningblk.Text = "Item update failed.";
+                    editwarningblk.Foreground = new SolidColorBrush(Colors.Red);
                 }
             }
             catch (FormatException ex)
             {
-                addwarningblk.Text = "Invalid input format. Please check numbers.";
-                addwarningblk.Foreground = new SolidColorBrush(Colors.Red);
+                editwarningblk.Text = "Invalid input format. Please check numbers.";
+                editwarningblk.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
 
         private void addbtn_Click(object sender, RoutedEventArgs e)
         {
             // Check for empty fields
-            if (string.IsNullOrWhiteSpace(filePath.Text) ||
-                string.IsNullOrWhiteSpace(AddItemName.Text) ||
+            if (string.IsNullOrWhiteSpace(AddItemName.Text) ||
                 string.IsNullOrWhiteSpace(AddItemPrice.Text) ||
                 string.IsNullOrWhiteSpace(AddItemCat.Text) ||
                 string.IsNullOrWhiteSpace(AddItemSoldBy.Text) ||
@@ -699,20 +776,20 @@ namespace Revamped_GroceryPOS
 
             try
             {
-                string image = filePath.Text;
                 string name = AddItemName.Text;
                 double price = double.Parse(AddItemPrice.Text);
                 string category = AddItemCat.Text;
                 string soldby = AddItemSoldBy.Text;
                 int stock = int.Parse(AddItemStock.Text);
 
-                bool success = dh.AddItem(image, name, price, soldby, stock, category);
+                bool success = dh.AddItem(name, price, soldby, stock, category);
 
                 if (success)
                 {
                     addwarningblk.Text = "Item added successfully!";
                     addwarningblk.Foreground = new SolidColorBrush(Colors.Green);
-                    ClearAddFields(); // Optional method to clear the fields after adding
+                    ClearAllFields();
+                    RefreshUI();
                 }
                 else
                 {
@@ -749,6 +826,8 @@ namespace Revamped_GroceryPOS
                 delwarningblk.Text = "Item deleted successfully!";
                 delwarningblk.Foreground = new SolidColorBrush(Colors.Green);
                 DeleteItemID.Text = string.Empty;
+                ClearAllFields();
+                RefreshUI();
             }
             else
             {
@@ -759,10 +838,19 @@ namespace Revamped_GroceryPOS
 
         private void DownLoadReport_Click(object sender, RoutedEventArgs e)
         {
+
             if (FromDate.SelectedDate == null || ToDate.SelectedDate == null)
             {
-                MessageBox.Show("Please select a date range.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                if (FromDate.SelectedDate == null && ToDate.SelectedDate == null)
+                {
+                    LoadTransactions();
+                    LoadInfoCards(transactions);
+                    return;
+                } else
+                {
+                    MessageBox.Show("Please select a date range.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
 
             List<Transaction> transactionnss = new List<Transaction>();
@@ -787,15 +875,16 @@ namespace Revamped_GroceryPOS
             LoadInfoCards(transactionnss);
 
             double totalinc = double.Parse(TotalIncome.Text.ToString().Substring(1));
+            string salesFileName = "SalesReport_" + fromDate.ToString("yyyy-MM-dd") + "-" + toDate.ToString("yyyy-MM-dd") + ".pdf";
 
             Exporter.ExportSalesReportToPDF(
-                fromDate: new DateOnly(2025, 5, 1),
-                toDate: new DateOnly(2025, 5, 7),
+                fromDate: fromDate,
+                toDate: toDate,
                 transactions: transactionnss,
                 totalTransactions: int.Parse(TotalTransactions.Text),
                 totalIncome: totalinc,
                 totalItems: int.Parse(TotalItemsSold.Text),
-                filePath: "C:\\Users\\kenne\\Downloads\\SalesReport_May1-7.pdf"
+                filePath: "C:\\Users\\kenne\\Downloads\\" + salesFileName
             );
         }
 
@@ -805,8 +894,17 @@ namespace Revamped_GroceryPOS
         {
             if (FromDate.SelectedDate == null || ToDate.SelectedDate == null)
             {
-                MessageBox.Show("Please select a date range.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                if (string.IsNullOrWhiteSpace(FromDate.ToString()) && string.IsNullOrWhiteSpace(ToDate.ToString()))
+                {
+                    LoadTransactions();
+                    LoadInfoCards(transactions);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Please select a date range.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
 
             List<Transaction> transactionnss = new List<Transaction>();
@@ -831,14 +929,39 @@ namespace Revamped_GroceryPOS
             LoadInfoCards(transactionnss);
         }
 
-        private void ClearAddFields()
+        private void ClearAllFields()
         {
-            filePath.Text = "";
             AddItemName.Text = "";
             AddItemPrice.Text = "";
             AddItemCat.Text = "";
             AddItemSoldBy.Text = "";
             AddItemStock.Text = "";
+
+            EditItemID.Text = "";
+            EditItemName.Text = "";
+            EditItemPrice.Text = "";
+            EditItemCat.Text = "";
+            EditItemStock.Text = "";
+            EditItemSoldBy.Text = "";
+
+            DeleteItemID.Text = "";
+        }
+
+        private void RefreshUI()
+        {
+            items.Clear();
+            productCards.Clear();
+            transactions.Clear();
+            
+
+            ProductsWrapPanel.Children.Clear();
+            TransactionsWrapPanel.Children.Clear();
+            InventoryPane.Children.Clear();
+
+            LoadProducts();
+            LoadTransactions();
+            LoadInfoCards(transactions);
+            LoadInventory();
         }
     }
 }

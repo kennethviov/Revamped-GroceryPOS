@@ -272,39 +272,64 @@ namespace Revamped_GroceryPOS.Utilities
             }
         }
 
-        public bool AddItem(string image, string name, double price, string soldBy, int stock, string category)
+        public bool AddItem(string name, double price, string soldBy, int stock, string categoryName)
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    conn.Open();
+                    connection.Open();
 
-                    string query = @"
-                INSERT INTO tbl_items (item_image, item_name, item_price, item_soldby, item_stock, item_category)
-                VALUES (@image, @name, @price, @soldBy, @stock, @category)";
+                    // Step 1: Get category_id and inventory_id from Inventory table
+                    string lookupQuery = "SELECT category_id, inventory_id FROM Inventory WHERE category_name = @category";
+                    int categoryId = 0, inventoryId = 0;
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCommand lookupCommand = new SqlCommand(lookupQuery, connection))
                     {
-                        cmd.Parameters.AddWithValue("@image", image);
-                        cmd.Parameters.AddWithValue("@name", name);
-                        cmd.Parameters.AddWithValue("@price", price);
-                        cmd.Parameters.AddWithValue("@soldBy", soldBy);
-                        cmd.Parameters.AddWithValue("@stock", stock);
-                        cmd.Parameters.AddWithValue("@category", category);
+                        lookupCommand.Parameters.AddWithValue("@category", categoryName);
 
-                        int result = cmd.ExecuteNonQuery();
-                        return result > 0;
+                        using (SqlDataReader reader = lookupCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                categoryId = Convert.ToInt32(reader["category_id"]);
+                                inventoryId = Convert.ToInt32(reader["inventory_id"]);
+                            }
+                            else
+                            {
+                                throw new Exception($"Category '{categoryName}' not found in Inventory.");
+                            }
+                        }
+                    }
+
+                    // Step 2: Insert the item into Items table
+                    string insertQuery = @"
+                INSERT INTO Items 
+                    (item_name, item_price, item_unit, item_stocks, category_id, inventory_id)
+                VALUES 
+                    (@name, @price, @soldBy, @stock, @categoryId, @inventoryId)";
+
+                    using (SqlCommand insertCommand = new SqlCommand(insertQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@name", name);
+                        insertCommand.Parameters.AddWithValue("@price", price);
+                        insertCommand.Parameters.AddWithValue("@soldBy", soldBy);
+                        insertCommand.Parameters.AddWithValue("@stock", stock);
+                        insertCommand.Parameters.AddWithValue("@categoryId", categoryId);
+                        insertCommand.Parameters.AddWithValue("@inventoryId", inventoryId);
+
+                        int rowsAffected = insertCommand.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Log or display the error message if needed
-                Console.WriteLine("AddItem failed: " + ex.Message);
+                MessageBox.Show($"Failed to add item:\n{ex.Message}", "Insert Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }
+
 
         public bool UpdateItem(int id, string name, double price, string soldBy, int stock, string categoryName)
         {
